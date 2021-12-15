@@ -1,31 +1,44 @@
-import React, { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 const Todoapp = () => {
-    const firstName = "Dozie"
 
-    const [name, setName] = useState("Don Dozie")
-
-    useEffect( ()=> {
-        console.log("Hello my name is", name);
-    })
+    const todoItems = [{
+        "id" : 1,
+        "itemName" : "Get money",
+        isDone : false
+    }, 
+    {
+        "id" : 2,
+        "itemName" : "Get more money",
+        isDone : false
+    }, {
+        "id" : 3,
+        "itemName" : "Work",
+        isDone : true
+    }]
     return (
+
+
         <div>
     <Header/>
-    <div>
-      <h1>Hello world</h1>
-      <label htmlFor="name" style={{
-          marginRight: "1rem"
-      }}>Name</label>
-      <input
-       type="text" 
-       id='name' 
-       onChange={(e) =>setName(e.target.value)}
-       value={name}
-       />
-      
-      <h3>I'm {firstName} by name</h3>
+    <div style={{marginBottom: '3rem'}}>
+      <h1>Todo List</h1>
+      {
+        todoItems
+        .map((todoItem) =>{
+            return <div>
+                {
+                    <label style={
+                        todoItem.isDone ?
+                        {textDecoration: "line-through"}
+                        : {}
+                    }>
+                        {todoItem.itemName}
+                    </label>}
+            </div>
+        })
+      }
       <Footer/>
     </div>
         </div>
