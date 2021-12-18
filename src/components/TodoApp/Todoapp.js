@@ -1,5 +1,6 @@
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import TodoItem from '../TodoItem/TodoItem';
 
 const Todoapp = () => {
 
@@ -27,16 +28,7 @@ const Todoapp = () => {
       {
         todoItems
         .map((todoItem) =>{
-            return <div>
-                {
-                    <label style={
-                        todoItem.isDone ?
-                        {textDecoration: "line-through"}
-                        : {}
-                    }>
-                        {todoItem.itemName}
-                    </label>}
-            </div>
+            return <TodoItem todoItemData={todoItem} key={todoItem.id}/> ;
         })
       }
       <Footer/>
